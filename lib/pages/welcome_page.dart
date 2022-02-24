@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:trips/misc/colors.dart';
 import 'package:trips/widgets/app_large_text.dart';
 import 'package:trips/widgets/app_text.dart';
+import 'package:trips/widgets/responsive_button.dart';
 
 class WelcomePage extends StatefulWidget {
   @override
@@ -60,6 +61,8 @@ class _WelcomePageState extends State<WelcomePage> {
                           size: 15,
                         ),
                       ),
+                      SizedBox(height: 30,),
+                      ResponsiveButton(width: 120,),
                     ],
                   ),
                 ],
