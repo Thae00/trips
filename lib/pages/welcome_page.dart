@@ -67,13 +67,14 @@ class _WelcomePageState extends State<WelcomePage> {
                     ],
                   ),
                   Column(
-                    children: List.generate(3, (index) {
+                    children: List.generate(3, (indexDots) {
                       return Container(
+                        margin: EdgeInsets.only(bottom: 2),
                         width: 8,
-                        height: 25,
+                        height: index == indexDots ? 25 : 8,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(8),
-                          color: AppColors.mainColor,
+                          color: index == indexDots ? AppColors.mainColor : AppColors.mainColor.withOpacity(0.3),
                         ),
                       );
                     }),
