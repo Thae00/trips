@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:trips/misc/colors.dart';
 import 'package:trips/widgets/app_large_text.dart';
+import 'package:trips/widgets/app_text.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key? key}) : super(key: key);
@@ -37,7 +38,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                     borderRadius: BorderRadius.circular(10),
                     color: Colors.grey.withOpacity(0.5),
                   ),
-                )
+                ),
               ],
             ),
           ),
@@ -111,7 +112,62 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                 Text("emoti"),
               ],
             ),
-          )
+          ),
+          SizedBox(
+            height: 30,
+          ),
+          Container(
+            margin: EdgeInsets.only(left: 20, right: 20),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                AppLargeText(22, "Explore more", Colors.black),
+                AppText(text: "See all", color: AppColors.textColor1),
+              ],
+            ),
+          ),
+          SizedBox(
+            height: 30,
+          ),
+          Container(
+            margin: EdgeInsets.only(left: 20),
+            height: 100,
+            width: double.maxFinite,
+            child: ListView.builder(
+              itemCount: 4,
+              scrollDirection: Axis.horizontal,
+              itemBuilder: (context, index) {
+                return Container(
+                  margin: EdgeInsets.only(right: 30),
+                  child: Column(
+                    children: [
+                      Container(
+                        width: 80,
+                        height: 80,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          color: Colors.white,
+                          image: DecorationImage(
+                            image: AssetImage(
+                              "assets/img/mountain.jpeg",
+                            ),
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      ),
+                      Container(
+                        child: AppText(
+                          text: "Kayaking",
+                          color: AppColors.textColor2,
+                        ),
+                      ),
+                    ],
+                  ),
+                );
+              },
+            ),
+          ),
+
         ],
       ),
     );
