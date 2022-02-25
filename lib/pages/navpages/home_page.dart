@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:trips/misc/colors.dart';
 import 'package:trips/widgets/app_large_text.dart';
 
 class HomePage extends StatefulWidget {
@@ -9,9 +10,12 @@ class HomePage extends StatefulWidget {
   _HomePageState createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
   @override
   Widget build(BuildContext context) {
+
+    TabController _tabController = TabController(length: 3, vsync: this);
+
     return Scaffold(
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -53,7 +57,37 @@ class _HomePageState extends State<HomePage> {
             height: 30,
           ),
           //tabBar
-
+          Container(
+            child: Align(
+              alignment: Alignment.centerLeft,
+              child: TabBar(
+                labelPadding: EdgeInsets.only(left: 20, right: 20),
+                controller: _tabController,
+                labelColor: Colors.black,
+                unselectedLabelColor: Colors.grey,
+                isScrollable: true,
+                indicatorSize: TabBarIndicatorSize.label,
+                tabs: [
+                  Tab(text: "Places",),
+                  Tab(text: "Inspiration",),
+                  Tab(text: "Emotions",),
+                ],
+              ),
+            ),
+          ),
+          //tabBarView
+          Container(
+            height: 300,
+            width: double.maxFinite,
+            child: TabBarView(
+              controller: _tabController,
+              children: [
+                Text("hi"),
+                Text("ins"),
+                Text("emoti"),
+              ],
+            ),
+          )
         ],
       ),
     );
