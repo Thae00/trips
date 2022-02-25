@@ -10,10 +10,9 @@ class HomePage extends StatefulWidget {
   _HomePageState createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
+class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
-
     TabController _tabController = TabController(length: 3, vsync: this);
 
     return Scaffold(
@@ -47,11 +46,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
           ),
           Container(
             margin: EdgeInsets.only(left: 20),
-            child: AppLargeText(
-              30,
-              "Discover",
-              Colors.black
-            ),
+            child: AppLargeText(30, "Discover", Colors.black),
           ),
           SizedBox(
             height: 30,
@@ -67,23 +62,51 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
                 unselectedLabelColor: Colors.grey,
                 isScrollable: true,
                 indicatorSize: TabBarIndicatorSize.label,
-                indicator: CircleTabIndicator(color: AppColors.mainColor, radius: 4),
+                indicator:
+                    CircleTabIndicator(color: AppColors.mainColor, radius: 4),
                 tabs: [
-                  Tab(text: "Places",),
-                  Tab(text: "Inspiration",),
-                  Tab(text: "Emotions",),
+                  Tab(
+                    text: "Places",
+                  ),
+                  Tab(
+                    text: "Inspiration",
+                  ),
+                  Tab(
+                    text: "Emotions",
+                  ),
                 ],
               ),
             ),
           ),
           //tabBarView
           Container(
+            padding: EdgeInsets.only(left: 20),
             height: 300,
             width: double.maxFinite,
             child: TabBarView(
               controller: _tabController,
               children: [
-                Text("hi"),
+                ListView.builder(
+                  itemCount: 3,
+                  scrollDirection: Axis.horizontal,
+                  itemBuilder: (context, index) {
+                    return Container(
+                      margin: EdgeInsets.only(right: 10, top: 10),
+                      width: 200,
+                      height: 300,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        color: Colors.white,
+                        image: DecorationImage(
+                          image: AssetImage(
+                            "assets/img/mountain.jpeg",
+                          ),
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    );
+                  },
+                ),
                 Text("ins"),
                 Text("emoti"),
               ],
@@ -94,8 +117,9 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin{
     );
   }
 }
+
 //for custom dot indicator for TabBar
-class CircleTabIndicator extends Decoration{
+class CircleTabIndicator extends Decoration {
   final Color color;
   double radius;
   CircleTabIndicator({required this.color, required this.radius});
@@ -106,21 +130,21 @@ class CircleTabIndicator extends Decoration{
   }
 }
 
-class _CirclePainter extends BoxPainter{
+class _CirclePainter extends BoxPainter {
   final Color color;
   double radius;
   _CirclePainter({required this.color, required this.radius});
 
   @override
   void paint(Canvas canvas, Offset offset, ImageConfiguration configuration) {
-
     Paint _paint = Paint();
     _paint.color = color;
     _paint.isAntiAlias = true;
 
-    final Offset circleOffset = Offset(configuration.size!.width/2 - radius/2, configuration.size!.height - radius);
+    final Offset circleOffset = Offset(
+        configuration.size!.width / 2 - radius / 2,
+        configuration.size!.height - radius);
 
     canvas.drawCircle(offset + circleOffset, radius, _paint);
   }
-
 }
