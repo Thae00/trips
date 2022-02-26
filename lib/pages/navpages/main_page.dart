@@ -3,7 +3,7 @@ import 'package:trips/pages/navpages/bar_item_page.dart';
 import 'package:trips/pages/navpages/my_page.dart';
 import 'package:trips/pages/navpages/search_page.dart';
 
-import 'home_page.dart';
+import '../home_page.dart';
 
 class MainPage extends StatefulWidget {
   MainPage({Key? key}) : super(key: key);
