@@ -11,6 +11,9 @@ class DetailPage extends StatefulWidget {
 }
 
 class _DetailPageState extends State<DetailPage> {
+
+  int gottenStars = 4;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,6 +62,7 @@ class _DetailPageState extends State<DetailPage> {
                   ),
                 ),
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -77,7 +81,18 @@ class _DetailPageState extends State<DetailPage> {
                         AppText(text: "USA, California", color: AppColors.textColor1,),
                       ],
                     ),
-                    SizedBox(height: 20,),
+                    SizedBox(height: 15,),
+                    Row(
+                      children: [
+                        Wrap(
+                          children: List.generate(5, (index) {
+                            return Icon(Icons.star, color: index < gottenStars ? AppColors.starColor : AppColors.textColor2);
+                          }),
+                        ),
+                        SizedBox(width: 10,),
+                        AppText(text: "(4.0)", color: AppColors.textColor2,),
+                      ],
+                    ),
                   ],
                 ),
               ),
