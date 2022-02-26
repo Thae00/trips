@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:trips/misc/colors.dart';
+import 'package:trips/widgets/app_large_text.dart';
+import 'package:trips/widgets/app_text.dart';
 
 class DetailPage extends StatefulWidget {
   DetailPage({Key? key}) : super(key: key);
@@ -21,7 +24,7 @@ class _DetailPageState extends State<DetailPage> {
               right: 0,
               child: Container(
                 width: double.maxFinite,
-                height: 300,
+                height: 350,
                 decoration: BoxDecoration(
                   image: DecorationImage(
                     image: AssetImage("assets/img/mountain.jpeg"),
@@ -42,6 +45,43 @@ class _DetailPageState extends State<DetailPage> {
                 ],
               ),
             ),
+            Positioned(
+              top: 320,
+              child: Container(
+                padding: EdgeInsets.only(left: 20,right: 20,top: 30),
+                width: MediaQuery.of(context).size.width,
+                height: 500,
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(30),
+                    topRight: Radius.circular(30)
+                  ),
+                ),
+                child: Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        AppLargeText(30, "Yosemite", Colors.black.withOpacity(0.8)),
+                        AppLargeText(30, "\$ 250", AppColors.mainColor),
+                      ],
+                    ),
+                    SizedBox(height: 10,),
+                    Row(
+                      children: [
+                        Icon(Icons.location_on, color: AppColors.mainColor,),
+                        SizedBox(
+                          width: 5,
+                        ),
+                        AppText(text: "USA, California", color: AppColors.textColor1,),
+                      ],
+                    ),
+                    SizedBox(height: 20,),
+                  ],
+                ),
+              ),
+            )
           ],
         ),
       ),
