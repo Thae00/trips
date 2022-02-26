@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:trips/misc/colors.dart';
+import 'package:trips/widgets/app_buttons.dart';
 import 'package:trips/widgets/app_large_text.dart';
 import 'package:trips/widgets/app_text.dart';
 
@@ -11,8 +12,8 @@ class DetailPage extends StatefulWidget {
 }
 
 class _DetailPageState extends State<DetailPage> {
-
   int gottenStars = 4;
+  int selectedIndex = -1;
 
   @override
   Widget build(BuildContext context) {
@@ -43,23 +44,30 @@ class _DetailPageState extends State<DetailPage> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  IconButton(onPressed: (){}, icon: Icon(Icons.menu), color: Colors.white,),
-                  IconButton(onPressed: (){}, icon: Icon(Icons.more_vert), color: Colors.white,),
+                  IconButton(
+                    onPressed: () {},
+                    icon: Icon(Icons.menu),
+                    color: Colors.white,
+                  ),
+                  IconButton(
+                    onPressed: () {},
+                    icon: Icon(Icons.more_vert),
+                    color: Colors.white,
+                  ),
                 ],
               ),
             ),
             Positioned(
               top: 320,
               child: Container(
-                padding: EdgeInsets.only(left: 20,right: 20,top: 30),
+                padding: EdgeInsets.only(left: 20, right: 20, top: 30),
                 width: MediaQuery.of(context).size.width,
                 height: 500,
                 decoration: BoxDecoration(
-                    color: Colors.white,
+                  color: Colors.white,
                   borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(30),
-                    topRight: Radius.circular(30)
-                  ),
+                      topLeft: Radius.circular(30),
+                      topRight: Radius.circular(30)),
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -67,31 +75,89 @@ class _DetailPageState extends State<DetailPage> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        AppLargeText(30, "Yosemite", Colors.black.withOpacity(0.8)),
+                        AppLargeText(
+                            30, "Yosemite", Colors.black.withOpacity(0.8)),
                         AppLargeText(30, "\$ 250", AppColors.mainColor),
                       ],
                     ),
-                    SizedBox(height: 10,),
+                    SizedBox(
+                      height: 10,
+                    ),
                     Row(
                       children: [
-                        Icon(Icons.location_on, color: AppColors.mainColor,),
+                        Icon(
+                          Icons.location_on,
+                          color: AppColors.mainColor,
+                        ),
                         SizedBox(
                           width: 5,
                         ),
-                        AppText(text: "USA, California", color: AppColors.textColor1,),
+                        AppText(
+                          text: "USA, California",
+                          color: AppColors.textColor1,
+                        ),
                       ],
                     ),
-                    SizedBox(height: 15,),
+                    SizedBox(
+                      height: 15,
+                    ),
                     Row(
                       children: [
                         Wrap(
                           children: List.generate(5, (index) {
-                            return Icon(Icons.star, color: index < gottenStars ? AppColors.starColor : AppColors.textColor2);
+                            return Icon(Icons.star,
+                                color: index < gottenStars
+                                    ? AppColors.starColor
+                                    : AppColors.textColor2);
                           }),
                         ),
-                        SizedBox(width: 10,),
-                        AppText(text: "(4.0)", color: AppColors.textColor2,),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        AppText(
+                          text: "(4.0)",
+                          color: AppColors.textColor2,
+                        ),
                       ],
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    AppLargeText(
+                      20,
+                      "People",
+                      Colors.black.withOpacity(0.8),
+                    ),
+                    SizedBox(
+                      height: 5,
+                    ),
+                    AppText(
+                      text: "Number of people in your group",
+                      color: AppColors.mainColor,
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Wrap(
+                      children: List.generate(5, (index) {
+                        return InkWell(
+                          onTap: (){
+                            setState(() {
+                              selectedIndex = index;
+                            });
+                          },
+                          child: Container(
+                            margin: EdgeInsets.only(right: 10),
+                            child: AppButtons(
+                              color: selectedIndex == index ? Colors.white : Colors.black,
+                              text: (index + 1).toString(),
+                              backgroundColor: selectedIndex == index ? Colors.black : AppColors.buttonBackground,
+                              size: 50,
+                              borderColor: selectedIndex == index ? Colors.black : AppColors.buttonBackground,
+                            ),
+                          ),
+                        );
+                      }),
                     ),
                   ],
                 ),
