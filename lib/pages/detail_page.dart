@@ -3,6 +3,7 @@ import 'package:trips/misc/colors.dart';
 import 'package:trips/widgets/app_buttons.dart';
 import 'package:trips/widgets/app_large_text.dart';
 import 'package:trips/widgets/app_text.dart';
+import 'package:trips/widgets/responsive_button.dart';
 
 class DetailPage extends StatefulWidget {
   DetailPage({Key? key}) : super(key: key);
@@ -141,7 +142,7 @@ class _DetailPageState extends State<DetailPage> {
                     Wrap(
                       children: List.generate(5, (index) {
                         return InkWell(
-                          onTap: (){
+                          onTap: () {
                             setState(() {
                               selectedIndex = index;
                             });
@@ -149,18 +150,61 @@ class _DetailPageState extends State<DetailPage> {
                           child: Container(
                             margin: EdgeInsets.only(right: 10),
                             child: AppButtons(
-                              color: selectedIndex == index ? Colors.white : Colors.black,
+                              color: selectedIndex == index
+                                  ? Colors.white
+                                  : Colors.black,
                               text: (index + 1).toString(),
-                              backgroundColor: selectedIndex == index ? Colors.black : AppColors.buttonBackground,
+                              backgroundColor: selectedIndex == index
+                                  ? Colors.black
+                                  : AppColors.buttonBackground,
                               size: 50,
-                              borderColor: selectedIndex == index ? Colors.black : AppColors.buttonBackground,
+                              borderColor: selectedIndex == index
+                                  ? Colors.black
+                                  : AppColors.buttonBackground,
                             ),
                           ),
                         );
                       }),
                     ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    AppLargeText(
+                      20,
+                      "Description",
+                      Colors.black.withOpacity(0.8),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    AppText(
+                      text:
+                          "You mush go for a travel. Travelling helps get rid of pressure. Go to the mountains. to see the nature",
+                      color: AppColors.mainTextColor,
+                    ),
                   ],
                 ),
+              ),
+            ),
+            Positioned(
+              bottom: 20,
+              left: 20,
+              right: 20,
+              child: Row(
+                children: [
+                  AppButtons(
+                    color: AppColors.textColor1,
+                    backgroundColor: Colors.white,
+                    size: 60,
+                    borderColor: AppColors.textColor1,
+                    isIcon: true,
+                    icon: Icons.favorite_border,
+                  ),
+                  SizedBox(width: 20,),
+                  ResponsiveButton(
+                    isResponsie: true,
+                  ),
+                ],
               ),
             )
           ],
