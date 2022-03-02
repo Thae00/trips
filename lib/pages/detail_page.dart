@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:trips/cubit/app_cubits.dart';
 import 'package:trips/misc/colors.dart';
 import 'package:trips/widgets/app_buttons.dart';
 import 'package:trips/widgets/app_large_text.dart';
@@ -46,8 +48,10 @@ class _DetailPageState extends State<DetailPage> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   IconButton(
-                    onPressed: () {},
-                    icon: Icon(Icons.menu),
+                    onPressed: () {
+                      BlocProvider.of<AppCubits>(context).goHome();
+                    },
+                    icon: Icon(Icons.arrow_back_ios),
                     color: Colors.white,
                   ),
                   IconButton(
