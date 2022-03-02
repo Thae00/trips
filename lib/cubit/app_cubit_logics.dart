@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:trips/cubit/app_cubit_states.dart';
 import 'package:trips/pages/detail_page.dart';
 import 'package:trips/pages/home_page.dart';
+import 'package:trips/pages/navpages/main_page.dart';
 import 'package:trips/pages/welcome_page.dart';
 
 import 'app_cubits.dart';
@@ -24,7 +25,7 @@ class _AppCubitLogicsState extends State<AppCubitLogics> {
             return WelcomePage();
           }
           if(state is LoadedState) {
-            return HomePage();
+            return MainPage();
           }
           if(state is DetailState) {
             return DetailPage();
