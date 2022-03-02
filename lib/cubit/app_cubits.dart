@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:trips/cubit/app_cubit_states.dart';
+import 'package:trips/model/data_model.dart';
 import 'package:trips/services/data_services.dart';
 
 class AppCubits extends Cubit<CubitStates>{
@@ -19,5 +20,9 @@ class AppCubits extends Cubit<CubitStates>{
     } catch (e) {
 
     }
+  }
+
+  detailPage(DataModel data){
+    emit(DetailState(data));
   }
 }
